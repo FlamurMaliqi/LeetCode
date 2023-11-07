@@ -1,0 +1,11 @@
+int lengthOfLongestSubstring(char * s){
+    int arr[128] = {0}, left = 0, max = 0;
+    for(int right = 0; s[right] != '\0'; right++){
+        if( arr[s[right]] != 0 && arr[s[right]] > left ){
+            left = arr[s[right]];
+        }
+        arr[s[right]] = right + 1;
+        if ( right - left + 1 > max ) max = right - left + 1;
+    }
+    return max;
+}
